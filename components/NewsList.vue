@@ -5,19 +5,19 @@ import {useNewsApiData} from "#imports";
 
 // const {data: newsArticles} = await useFetch('/api/articles')
 
+const runtimeConfig = useRuntimeConfig()
+
+const newsApiToken = runtimeConfig.newsApiToken
+
 const {
   data,
   pending,
   refresh,
   error
-} = await useNewsApiData('everything?q=bitcoin&apiKey=9f5778983e954d628ad8a8c8c70fcf6f')
+} = await useNewsApiData(`everything?q=bitcoin&apiKey=${newsApiToken}`)
 
 const articles = data.value.articles
 
-console.log(data.value)
-articles.forEach(article => {
-  console.log(article)
-})
 </script>
 
 <template>

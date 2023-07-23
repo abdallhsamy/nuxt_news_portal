@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
     devtools: {enabled: false},
     modules: [
@@ -8,7 +9,7 @@ export default defineNuxtConfig({
     apiParty: {
         endpoints: {
             newsApi: {
-                url: process.env.NEWS_API_BASE_URL!,
+                url: process.env.NUXT_NEWS_API_BASE_URL,
                 // Global headers sent with each request
                 headers: {
                     Authorization: `Bearer ${process.env.NEWS_API_TOKEN}`
@@ -26,5 +27,16 @@ export default defineNuxtConfig({
             }
         },
     },
-    // apiKey : '9f5778983e954d628ad8a8c8c70fcf6f'
+    runtimeConfig: {
+        newsApiBaseUrl: '',
+        // The private keys which are only available within server-side
+
+        newsApiToken: '',
+        // Keys within public, will be also exposed to the client-side
+        public: {
+            apiBase: '/api',
+            // newsApiToken : '',
+        }
+    }
+
 })
