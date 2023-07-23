@@ -20,13 +20,14 @@ useHead({
 //   }
 // ]
 
-// const { data } = await useFetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=9f5778983e954d628ad8a8c8c70fcf6f');
+// const { data : articles } = await useFetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=9f5778983e954d628ad8a8c8c70fcf6f');
+// console.log(articles)
 //
 // const articles = data.articles
-// console.log(data)
 // const { data, pending, refresh, error } = await useNewsApiData('top-headlines?country=eg&apiKey=9f5778983e954d628ad8a8c8c70fcf6f')
-
+//
 // const articles = data.value.articles
+// console.table(data.value.articles)
 // async asyncData({ $axios }) {
 //   try {
 //     const response = await $axios.$get(

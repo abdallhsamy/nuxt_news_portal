@@ -1,72 +1,23 @@
 <script setup lang="ts">
 
 import NewsCard from "~/components/NewsCard.vue";
-const newsArticles =  [
-  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },  {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  }, {
-    title: 'Maariv : Al-Qassam fighters are more efficient and professional than our soldiers',
-    shortDescription: 'A Zionist general admitted that "the fighters of the Al-Qassam...',
-    categories: ['politics'],
-    favorites: 14,
-    shares: 143,
-    comments: 35
-  },
-]
+import {useNewsApiData} from "#imports";
+
+// const {data: newsArticles} = await useFetch('/api/articles')
+
+const {
+  data,
+  pending,
+  refresh,
+  error
+} = await useNewsApiData('everything?q=bitcoin&apiKey=9f5778983e954d628ad8a8c8c70fcf6f')
+
+const articles = data.value.articles
+
+console.log(data.value)
+articles.forEach(article => {
+  console.log(article)
+})
 </script>
 
 <template>
@@ -99,8 +50,8 @@ const newsArticles =  [
     </div>
 
     <div class="flex  flex-wrap gap-4">
-      <template v-for="article in newsArticles">
-        <NewsCard :article="article" />
+      <template v-for="article in articles">
+        <NewsCard :article="article"/>
       </template>
     </div>
   </div>
