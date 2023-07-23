@@ -7,9 +7,9 @@ import TrendingNews from "~/components/TrendingNews.vue";
 
 <template>
   <div class="px-4 py-4 mx-auto flex flex-wrap">
+    <NewsList class="lg:order-1"/>
     <NewsFilterByCategory/>
-    <NewsList/>
-    <TrendingNews/>
+    <TrendingNews class="order-last"/>
   </div>
 </template>
 
